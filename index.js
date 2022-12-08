@@ -1,6 +1,6 @@
 require('dotenv').config(); // variables d'environnement
 const express = require('express'); // express
-const router = require("./app/router"); // router
+const router = require('./app/router'); // router
 const expressSession = require('express-session'); // session
 
 const app = express();
@@ -11,7 +11,7 @@ app.set('views', './app/views');
 app.set('view engine', 'ejs');
 
 // Public
-app.use(express.static("./public"));
+app.use(express.static('./public'));
 
 // Session
 app.use(expressSession({
@@ -30,5 +30,5 @@ app.use((req,res)=>{
 });
 
 app.listen(PORT, () => {
-  console.log(`App listening on port http://localhost:PORT`)
+  console.log('App listening on port http://localhost:PORT');
 });
