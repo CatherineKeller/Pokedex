@@ -1,0 +1,107 @@
+<%- include('../main/partials/header') %>
+  
+<main class="main-container">
+  <h1>Détails de <%= pokemon.nom %></h1>
+  <div class="pokemon-detail">
+    <div class="pokemon-detail__img">
+      <img src="/img/<%= pokemon.numero %>.png" alt="<%= pokemon.nom %>" />
+    </div>
+    <div class="pokemon-detail__content">
+      
+      <h2>
+        #<%= pokemon.numero %> <%= pokemon.nom %>
+        <% if (!locals.pokedexActive) { %>
+          <%= locals.pokedexActive %>
+          <div class="tooltip">
+            <a class="addtopokedex" href="/pokedex/add/<%= pokemon.numero %>">
+              <i class="fa-regular fa-heart"></i>
+            </a>
+            <span class="tooltiptext">Ajouter au Pokedex</span>
+          </div>
+          
+        <% } else { %>
+  
+          <div class="tooltip">
+            <a class="addtopokedex" href="/pokedex/remove/<%= pokemon.numero %>">
+              <i class="fa-solid fa-heart"></i>
+            </a>
+            <span class="tooltiptext">Retirer du Pokedex</span>
+          </div>
+            
+        <% } %>
+      </h2>
+
+      <p>
+        <!-- Types :  -->
+        <span class="labels">
+        <%
+          for(const type of typesPokemon){
+        %>
+          <span class="label-type" style="background-color:#<%= type.color %>"><a href="/types/<%= type.type_id %>"><%= type.name %></a></span>
+        <% 
+          }
+        %>
+        </span>
+      </p>
+      <h2>Statistiques</h2>
+      <div class="stats">
+        <div class="stat">
+          <p>
+            <span>PV</span>
+            <span><%= pokemon.pv %></span>
+          </p>
+          <div class="stats-line">
+            <span class="" style="width:<%= pokemon.pv * 100 / 255 %>%" ></span> 
+          </div>
+        </div>
+        <div class="stat">
+          <p>
+            <span>Attaque</span>
+            <span><%= pokemon.attaque %></span>
+          </p>
+          <div class="stats-line">
+            <span class="" style="width:<%= pokemon.attaque * 100 / 255 %>%" ></span> 
+          </div>
+        </div>
+        <div class="stat">
+          <p>
+            <span>Défense</span>
+            <span><%= pokemon.defense %></span>
+          </p>
+          <div class="stats-line">
+            <span class="" style="width:<%= pokemon.defense * 100 / 255 %>%" ></span> 
+          </div>
+        </div>
+        <div class="stat">
+          <p>
+            <span>Attaque Spé</span>
+            <span><%= pokemon.attaque_spe %></span>
+          </p>
+          <div class="stats-line">
+            <span class="" style="width:<%= pokemon.attaque_spe * 100 / 255 %>%" ></span> 
+          </div>
+        </div>
+        <div class="stat">
+          <p>
+            <span>Défense Spé
+            </span><%= pokemon.defense_spe %>
+          </p>
+          <div class="stats-line">
+            <span class="" style="width:<%= pokemon.defense_spe * 100 / 255 %>%" ></span> 
+          </div>
+        </div>
+        <div class="stat">
+          <p>
+            <span>Vitesse</span>
+            <span><%= pokemon.vitesse %></span>
+          </p>
+          <div class="stats-line">
+            <span class="" style="width:<%= pokemon.vitesse * 100 / 255 %>%" ></span> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<%- include('../main/partials/footer') %>

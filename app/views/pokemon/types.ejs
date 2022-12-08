@@ -1,0 +1,19 @@
+<%- include('../main/partials/header') %>
+  
+<main class="main-container">
+  <h1>Types</h1>
+  <div class="pokemon-types">
+    <ul class="types">
+      <% 
+        for (const type of types) {
+      %>
+        <li><a href="/types/<%= type.id %>" style="background-color: #<%= type.color %>;"><%= type.name %></a></li>
+      <%
+        }  
+      %> 
+    </ul>
+
+  </div>
+</main>
+
+<%- include('../main/partials/footer') %>

@@ -1,0 +1,43 @@
+<%- include('partials/header') %>
+  
+<main class="main-container">
+  <h1>
+    <% 
+      if (!locals.pokedex) { 
+    %>
+      Pokemons
+      <%= locals.type?.name %>
+    <% 
+      } else {
+    %>
+      Pokedex
+      <% if (nbPokedex) { %>
+        <em><%= nbPokedex %> Pokemons ajoutés</em>
+      <% } %>
+    <% 
+      }
+    %>
+  </h1>
+  <div class="pokemons">
+    <% 
+      if (pokemons.length){
+        for (const pokemon of pokemons) { 
+      %>
+        <a class="pokemon-link" href="/pokemon/<%= pokemon.numero %>">
+          <div class="pokemon" style="background-color:#<%= locals.type?.color %>">
+              <img src="/img/<%= pokemon.numero %>.png" alt="<%= pokemon.nom %>" />
+              <p><%= pokemon.nom %> #<%= pokemon.numero %></p>
+          </div>
+        </a>
+    <% 
+        }
+      } else {
+    %>
+    <p>Aucun Pokemon à afficher</p>
+    <%
+      }
+    %>
+  </div>
+</main>
+
+<%- include('partials/footer') %>

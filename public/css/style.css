@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+
+body {
+  background-color: #666666;
+  font-family: 'Bree Serif', Arial, Helvetica, sans-serif;
+}
+h1 {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+h1 em {
+  display: block;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+h2 {
+  font-size: 1.8rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+h2:first-child {
+  margin-top: 0;
+}
+p {
+  margin: .5rem 0;
+}
+
+/*** HEADER ***/
+header {
+  background-color: rgba(0,0,0,.3);
+  position: sticky;
+  top: 0;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+
+}
+header nav {
+  display: flex;
+  column-gap: 2rem;
+  align-items: center;
+}
+header nav a {
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.header-logo {
+  width: 130px;
+}
+.search {
+  display: flex;
+}
+.search input {
+  border: 0;
+  padding: .5rem;
+}
+.search input[type=text]{
+  border-radius: 5px 0 0 5px;
+}
+.search input[type=submit]{
+  background-color: #F3F3F3;
+  border-radius: 0 5px 5px 0;
+  transition: all .5s;
+}
+.search input[type=submit]:hover{
+  background-color: rgb(19, 19, 99);
+  color: white;
+  cursor: pointer;
+}
+
+.main-container {
+  width: 80%;
+  margin: 0 auto;
+  color: white;
+}
+.pokemons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  row-gap: 1rem;
+  column-gap: 1rem;
+}
+.pokemon {
+  width: 300px;
+  text-align: center;
+  font-size: 1.3rem;
+  border: 1px solid white;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-sizing: border-box;
+  transition: .5s all;
+}
+.pokemon img {
+  width: 100%;
+}
+.pokemon:hover {
+  background-color: rgb(19, 19, 99);
+}
+.pokemon-link {
+  color: white;
+  text-decoration: none;
+}
+
+/*** DETAIL PAGE ***/
+.pokemon-detail {
+  display: flex;
+  justify-content: center;
+}
+.pokemon-detail__img {
+  width: 35%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pokemon-detail__img img {
+  max-width: 100%;
+}
+.pokemon-detail__content {
+  background-color: #555555;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+}
+.pokemon-detail__content h2 .tooltip {
+  margin-left: 1rem;
+  font-size: 1.2rem;
+}
+.pokemon-detail__content h2 {
+  display: flex;
+  align-items: center;
+}
+.stats {
+  width: 500px;
+}
+.stats-line {
+  background-color: rgba(255,255,255,.8) ;
+  border-radius: 5px;
+  width: 300px;
+  height: 25px;
+}
+.stats-line span {
+  display: block;
+  border-radius: 5px 0 0 5px;
+  background-color: rgba(19, 19, 99,.8);
+  height: 25px;
+  width: 0;
+  animation: progress-bar 1000ms;
+}
+
+
+@keyframes progress-bar{
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+    opacity: 0;
+  }
+  25% {
+    transform: scaleX(.3);
+    opacity: 0;
+  }
+  85%,100% {
+    opacity: 1;
+  }
+  100% {
+    transform-origin: left;
+    transform: scaleX(1);
+  }
+}
+
+
+.labels {
+  display: flex;
+  column-gap: .5rem;
+}
+.label-type {
+  border-radius: .5rem;
+}
+.label-type a {
+  display: block;
+  padding: .5rem 1rem;
+  color: white;
+  text-decoration: none;
+}
+.stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 3rem;
+}
+.stat p {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin: 0.8rem 0;
+}
+
+/*** TYPES PAGE ***/
+.types {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 1rem;
+  max-height: 225px;
+  flex-wrap: wrap;
+  column-gap: 1rem;
+}
+.types a {
+  display: block;
+  background-color: transparent;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  color: white;
+  text-decoration: none;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: max-content;
+  background-color: #333333;
+  color: #fff;
+  border-radius: 6px;
+  padding: .5rem;
+  font-size: 1rem;
+
+  /* Position the tooltip */
+  position: absolute;
+  left: calc(100% + .5rem);
+  z-index: 1;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.addtopokedex {
+  color: white;
+}
