@@ -1,6 +1,6 @@
 const { Client } = require('pg');
 
-const connectionString = process.env.PG_CONNECT;
+const connectionString = process.env.DATABASE_URL;
 
 const client = new Client({
   connectionString,
