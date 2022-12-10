@@ -11,16 +11,18 @@
 </head>
 <body>
   <header>
-    <a href="/"><img class="header-logo" src="/img/pokemon-logo.png" alt="Logo Pokemon" /></a>
+    <div class="header-logo-container">
+      <a href="/"><img class="header-logo" src="/img/pokemon-logo.png" alt="Logo Pokemon" /></a>
+    </div>
     <nav>
       <a href="/">Pokemons</a>
       <a href="/types">Types</a>
       <a href="/pokedex">Pokedex (<%= locals.nbPokedex %>)</a>
-      <form method="GET" action="/pokemons" class="search">
-        <input type="text" name="search" placeholder="Rechercher un Pokemon"/>
-        <input type="submit" value="Rechercher"/>
-      </form>
+      <div class="search-container">
+        <form method="GET" action="/pokemons" class="search">
+          <input type="text" name="search" placeholder="Rechercher un Pokemon"/>
+          <input type="submit" value="Rechercher"/>
+        </form>
+      </div>
     </nav>
   </header>
-
-  
