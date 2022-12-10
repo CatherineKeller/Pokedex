@@ -1,7 +1,7 @@
 require('dotenv').config(); // variables d'environnement
 const express = require('express'); // express
 const router = require('./app/router'); // router
-const expressSession = require('express-session'); // session
+const sessionMiddleware = require('./app/middlewares/sessionMiddleware'); // session
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -14,12 +14,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('./public'));
 
 // Session
-app.use(expressSession({
-  secret: 'pokedex',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { }
-}));
+app.use(sessionMiddleware);
 
 // Routage
 app.use(router);

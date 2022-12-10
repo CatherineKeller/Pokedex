@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/O-clock-Maya/S04E10-pokedEXpress-CatherineKeller#readme",
   "dependencies": {
+    "connect-pg-simple": "^8.0.0",
     "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
