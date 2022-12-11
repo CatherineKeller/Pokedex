@@ -443,3 +443,14 @@ INSERT INTO "type" ("id", "name", "color") VALUES
 (15, 'Spectre', '6666bb'),
 (16, 'Ténèbres', '665544'),
 (17, 'Vol', '6699ff');
+
+CREATE TABLE "session" (
+  "sid" varchar NOT NULL COLLATE "default",
+  "sess" json NOT NULL,
+  "expire" timestamp(6) NOT NULL
+)
+WITH (OIDS=FALSE);
+
+ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
+
+CREATE INDEX "IDX_session_expire" ON "session" ("expire");
