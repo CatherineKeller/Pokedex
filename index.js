@@ -4,7 +4,7 @@ const router = require('./app/router'); // router
 const sessionMiddleware = require('./app/middlewares/sessionMiddleware'); // session
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5919;
 
 // Templates
 app.set('views', './app/views');

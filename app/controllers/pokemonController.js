@@ -121,7 +121,6 @@ const pokemonController = {
       if(!req.session.selectedPokemonIds) {
         req.session.selectedPokemonIds = [];
       }
-
       // Si le pokemon existe
       if(pokemon){
         // Tester si le Pokemon a déjà été ajouté et si il y a moins de 20 Pokemon dans le Pokedex
@@ -131,7 +130,6 @@ const pokemonController = {
         if(!findAlreadyExist && req.session.selectedPokemonIds.length < 20) {
           req.session.selectedPokemonIds.push(pokemon);
         }
-
         // Après l'ajout, je redirige vers la page du Pokemon
         res.redirect(`/pokemon/${pokeId}`);
       } else {

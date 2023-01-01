@@ -16,7 +16,10 @@ const sessionMiddleware = expressSession({
   secret: process.env.SESSION_SECRET,
   resave: true,
   saveUninitialized: true,
-  cookie: { secure: true }
+  cookie: {
+    maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+    //secure: false
+  }
 });
 
 module.exports = sessionMiddleware;
