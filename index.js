@@ -4,7 +4,7 @@ const router = require('./app/router'); // router
 const sessionMiddleware = require('./app/middlewares/sessionMiddleware'); // session
 
 const app = express();
-const PORT = process.env.PORT || 5919;
+const PORT = process.env.PORT || 3000;
 
 // Templates
 app.set('views', './app/views');
@@ -25,5 +25,5 @@ app.use((req,res)=>{
 });
 
 app.listen(PORT, () => {
-  console.log('App listening on port http://localhost:PORT');
+  console.log('App listening');
 });
