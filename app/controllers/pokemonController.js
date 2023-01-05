@@ -15,7 +15,7 @@ const pokemonController = {
 
     } catch (error) {
       console.trace(error);
-      res.status(500).send(`Une erreur s'est produite...`);
+      res.status(500).send('Une erreur s\'est produite...');
     }
   },
   onePokemon: async (req, res, next) => {
@@ -46,7 +46,7 @@ const pokemonController = {
       }
     } catch (error) {
       console.trace(error);
-      res.status(500).send(`Une erreur s'est produite...`);
+      res.status(500).send('Une erreur s\'est produite...');
     }
   },
   // Afichage de la page "/types/"
@@ -58,7 +58,7 @@ const pokemonController = {
 
     } catch (error) {
       console.trace(error);
-      res.status(500).send(`Une erreur s'est produite...`);
+      res.status(500).send('Une erreur s\'est produite...');
     }
   },
   // Affichage de la page "/types/:id"
@@ -78,7 +78,7 @@ const pokemonController = {
       }
     } catch (error) {
       console.trace(error);
-      res.status(500).send(`Une erreur s'est produite...`);
+      res.status(500).send('Une erreur s\'est produite...');
     }
   },
   countPokedex: (req, res, next) => {
@@ -131,7 +131,12 @@ const pokemonController = {
           req.session.selectedPokemonIds.push(pokemon);
         }
         // Après l'ajout, je redirige vers la page du Pokemon
-        res.redirect(`/pokemon/${pokeId}`);
+        // res.redirect(`/pokemon/${pokeId}`);
+        // res.status(200).json(pokemon);
+        res.locals.nbPokedex ++;
+        const countPokedex = res.locals.nbPokedex;
+
+        res.status(200).send({id:pokemon.id, inPokedex: 'true', count: countPokedex});
       } else {
         next();
       }
@@ -141,16 +146,33 @@ const pokemonController = {
       res.status(500).send('Oups, une erreur s\'est produite...');
     }
   },
-  removePokemon: (req, res) => {
+  removePokemon: async (req, res, next) => {
     // Suppression d'un Pokemon du Pokedex
     const pokeId = Number(req.params.numero); // ID du pokemon à supprimer
 
-    // Filtrer la session : j'enleve le Pokemon de la session "selectedPokemonIds"
-    const pokedex = req.session.selectedPokemonIds.filter(pokemon => !(pokemon.numero === pokeId));
-    req.session.selectedPokemonIds = pokedex; // Et je réaffecte la nouvelle valeur du Pokedex à la session
+    try {
+      // Rechercher le Pokemon à ajouter (avec l'id)
+      const pokemon = await dataMapper.getOnePokemon(pokeId);
 
-    // Je redirige vers la page du Pokemon
-    res.redirect(`/pokemon/${pokeId}`);
+      if(pokemon){
+        // Filtrer la session : j'enleve le Pokemon de la session "selectedPokemonIds"
+        const pokedex = req.session.selectedPokemonIds.filter(pokemon => !(pokemon.numero === pokeId));
+        req.session.selectedPokemonIds = pokedex; // Et je réaffecte la nouvelle valeur du Pokedex à la session
+
+        // Je redirige vers la page du Pokemon
+        // res.redirect(`/pokemon/${pokeId}`);
+        res.locals.nbPokedex --;
+        const countPokedex = res.locals.nbPokedex;
+
+        res.status(200).send({id:pokemon.id, inPokedex: 'false', count: countPokedex});
+      } else {
+        next();
+      }
+
+    } catch (error) {
+      console.trace(error);
+      res.status(500).send('Oups, une erreur s\'est produite...');
+    }
   },
   searchPokemon: async (req, res, next) => {
     try {
@@ -171,7 +193,7 @@ const pokemonController = {
 
     } catch (error) {
       console.trace(error);
-      res.status(500).send(`Une erreur s'est produite...`);
+      res.status(500).send('Une erreur s\'est produite...');
     }
   },
 };

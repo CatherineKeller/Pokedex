@@ -13,7 +13,7 @@
         <% if (!locals.pokedexActive) { %>
           <%= locals.pokedexActive %>
           <div class="tooltip">
-            <a class="addtopokedex" href="/pokedex/add/<%= pokemon.numero %>">
+            <a class="pokedex addtopokedex" data-id="<%= pokemon.numero %>" href="">
               <i class="fa-regular fa-heart"></i>
             </a>
             <span class="tooltiptext">Ajouter au Pokedex</span>
@@ -22,7 +22,7 @@
         <% } else { %>
   
           <div class="tooltip">
-            <a class="addtopokedex" href="/pokedex/remove/<%= pokemon.numero %>">
+            <a class="pokedex deletefrompokedex" data-id="<%= pokemon.numero %>" href="">
               <i class="fa-solid fa-heart"></i>
             </a>
             <span class="tooltiptext">Retirer du Pokedex</span>

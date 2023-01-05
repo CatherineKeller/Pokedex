@@ -17,7 +17,7 @@
     <nav>
       <a href="/">Pokemons</a>
       <a href="/types">Types</a>
-      <a href="/pokedex">Pokedex (<%= locals.nbPokedex %>)</a>
+      <a href="/pokedex">Pokedex (<span id="nbpokedex"><%= locals.nbPokedex %></span>)</a>
       <div class="search-container">
         <form method="GET" action="/pokemons" class="search">
           <input type="text" name="search" placeholder="Rechercher un Pokemon"/>
